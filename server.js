@@ -1,7 +1,7 @@
 const express= require("express");
 const path=require("path");
 const cors=require("cors")
-
+const port=process.env.PORT || 3005
 const {open}=require("sqlite");
 const sqlite3=require("sqlite3");
 const app=express();
@@ -20,7 +20,7 @@ const initializeDBAndServer=async()=>{
             driver:sqlite3.Database,
         });
 
-        app.listen(3005,()=>{
+        app.listen(port,()=>{
             console.log("Server Running at http://localhost:3005/")
         })
 
