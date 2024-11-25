@@ -5,8 +5,9 @@ const cors=require("cors")
 const {open}=require("sqlite");
 const sqlite3=require("sqlite3");
 const app=express();
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
+
 
 let db=null;
 
@@ -19,8 +20,8 @@ const initializeDBAndServer=async()=>{
             driver:sqlite3.Database,
         });
 
-        app.listen(3001,()=>{
-            console.log("Server Running at http://localhost:3000/")
+        app.listen(3005,()=>{
+            console.log("Server Running at http://localhost:3005/")
         })
 
     }catch(e){
@@ -28,7 +29,6 @@ const initializeDBAndServer=async()=>{
         process.exit(1)
     }
 };
-
 
 
 
@@ -95,6 +95,8 @@ await db.run(updatedNoteQuery)
 response.send("note Updated Successfully")
 
 })
+
+
 
 
 app.delete("/notes/:noteId/",async(request,response)=>{
